@@ -8,8 +8,8 @@ Created on Wed Oct 16 10:41:50 2019
 import numpy as np
 import matplotlib.pyplot as plt
 import yaml
-
-from OssiviewBufferReader import OssiviewDataHeader
+from OssiviewDataHeader import OssiviewDataHeader
+# from OssiviewBufferReader import OssiviewDataHeader
 
 class OssiviewBufferReader:
     def __init__(self,filePath):
