@@ -14,6 +14,36 @@ import matplotlib
 import matplotlib.gridspec as gridspec
 
 
+def normalise(v, dimN=2):
+    r"""Normalise vector components of input array.
+
+    Normalise vectors, corresponding to slices along specified number
+    of initial spatial dimensions of an array, to have unit
+    :math:`\ell_2` norm. The remaining axes enumerate the distinct
+    vectors to be normalised.
+
+    Parameters
+    ----------
+    v : array_like
+      Array with components to be normalised
+    dimN : int, optional (default 2)
+      Number of initial dimensions over which norm should be computed
+
+    Returns
+    -------
+    vnrm : ndarray
+      Normalised array
+    """
+
+    axisN = tuple(range(0, dimN))
+    if np.isrealobj(v):
+        vn = np.sqrt(np.sum(v**2, axisN, keepdims=True))
+    else:
+        vn = np.sqrt(np.sum(np.abs(v)**2, axisN, keepdims=True))
+    vn[vn == 0] = 1.0
+    return np.asarray(v / vn, dtype=v.dtype)
+
+
 np.seterr(divide='ignore', invalid='ignore')
 # Customize matplotlib
 matplotlib.rcParams.update(
@@ -32,8 +62,9 @@ path = '../data/2021.03.02 Measurement/frame/12.06.59'
 with open(path, 'rb') as f:
     frame = pickle.load(f)
     f.close()
-frame = cnvrep.normalise(frame, dimN=1)
-#
+# frame = cnvrep.normalise(frame, dimN=1)
+frame = normalise(frame, dimN=1)
+
 # sample 100 lines: every 600 lines out of the 15,000 lines: spaced out in 3/500 second
 # sample = 100
 sample = 15000

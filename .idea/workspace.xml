@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="375b66fb-98e6-45a7-abba-e73f40f21aec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/PSF_stability.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/PSF_stability.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/psf_drift.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/psf_drift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/psf_exp.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/psf_exp.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,19 +30,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "true",
-    "last_opened_file_path": "/Users/youngwang/Desktop/PSF-Analysis"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/youngwang/Desktop/PSF-Analysis&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scripts" />
       <recent name="$PROJECT_DIR$/scripts/aux" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.psf_drift">
+  <component name="RunManager" selected="Python.PSF_stability">
     <configuration name="PSF_stability" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PSF-Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,6 +90,9 @@
       <module name="PSF-Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -107,6 +112,9 @@
       <module name="PSF-Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -124,9 +132,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.PSF_stability" />
         <item itemvalue="Python.psf_drift" />
         <item itemvalue="Python.psf_exp" />
-        <item itemvalue="Python.PSF_stability" />
         <item itemvalue="Python.spectro_view" />
       </list>
     </recent_temporary>
@@ -147,7 +155,7 @@
       <workItem from="1642648712950" duration="50000" />
       <workItem from="1642648766072" duration="64000" />
       <workItem from="1642648833203" duration="434000" />
-      <workItem from="1678041175479" duration="618000" />
+      <workItem from="1678041175479" duration="870000" />
     </task>
     <servers />
   </component>

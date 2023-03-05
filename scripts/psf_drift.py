@@ -85,7 +85,7 @@ for i in range(len(files)):
 phase_time = np.zeros(len(files))
 mag_time = np.zeros(len(files))
 fig = plt.figure(constrained_layout=True,figsize=(18,13))
-gs = fig.add_gridspec(ncols=3, nrows=4)
+gs = fig.add_gridspec(ncols=3, nrows=3)
 
 fig.suptitle('axial PSF over 60 s')
 
@@ -225,30 +225,30 @@ ax.set_xlabel('time: ms')
 ax.set_ylabel('rad')
 ax.set_title('axial PSF peak phase')
 
-ax = fig.add_subplot(gs[3,:])
+# ax = fig.add_subplot(gs[3,:])
 # axins = zoomed_inset_axes(ax, zoom=0.6, loc=2)
 # axins.set_xticks([])
 # axins.set_yticks([])
 
-ax.set_title('sample axial PSF magnitude plot')
-for i in range(4):
-    temp = 20 * np.log10(abs(psf[:, :, 15 * i]))
-    temp += 75
-    # temp = (abs(psf[:, :, 15 * i]))
-    ax.plot(temp,label=str(i*15) +' sec')
-    ax.legend(loc = 'upper right',fontsize=(8))
-    ax.set_xlabel('axial depth: pixel')
-    ax.set_ylabel('intensity (dB)')
-
-    # axins.plot(temp[0:50])
-    # axins2 = zoomed_inset_axes(ax, zoom=0.5, loc=2)
-    # zo_temp = temp
-    # axins2.plot(zo_temp)
-    # axins2.set_xlim(0, 50)
-    # axins2.set_xticks([])
-    # axins2.set_yticks([])
-
-    ax.set_aspect(30/25)
+# ax.set_title('sample axial PSF magnitude plot')
+# for i in range(4):
+#     temp = 20 * np.log10(abs(psf[:, :, 15 * i]))
+#     temp += 75
+#     # temp = (abs(psf[:, :, 15 * i]))
+#     ax.plot(temp,label=str(i*15) +' sec')
+#     ax.legend(loc = 'upper right',fontsize=(8))
+#     ax.set_xlabel('axial depth: pixel')
+#     ax.set_ylabel('intensity (dB)')
+#
+#     # axins.plot(temp[0:50])
+#     # axins2 = zoomed_inset_axes(ax, zoom=0.5, loc=2)
+#     # zo_temp = temp
+#     # axins2.plot(zo_temp)
+#     # axins2.set_xlim(0, 50)
+#     # axins2.set_xticks([])
+#     # axins2.set_yticks([])
+#
+#     ax.set_aspect(30/25)
 
 plt.show()
 
