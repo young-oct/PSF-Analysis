@@ -51,14 +51,14 @@ ax.annotate("",
                             connectionstyle="arc3", color='r', lw=2),
             )
 
-plt.text(1,psf_dB.mean()+20, 'Dynamic Range: %.2f dB' %(psf_dB.max() - psf_dB.mean()), fontsize = 20)
+plt.text(1,psf_dB.mean()+20, 'Dynamic range: %.2f dB' %(psf_dB.max() - psf_dB.mean()), fontsize = 20)
 # rotation = 90, fontsize = 18)
 
 plt.ylabel('amplitude [dB]')
 plt.xlabel('depth [mm]')
 # plt.minorticks_on()
 # plt.xticks()
-plt.title('Averaged Axial Point Spread Function')
+plt.title('Averaged axial point spread function (PSF)')
 # plt.grid(b= True, which='minor', color='r', linestyle='--')
 plt.tight_layout()
 plt.show()

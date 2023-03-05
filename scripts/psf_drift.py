@@ -8,8 +8,8 @@ from pathlib import Path
 import numpy as np
 import pickle
 from matplotlib import pyplot as plt
-from sporco import metric
-from sporco import cnvrep
+# from sporco import metric
+# from sporco import cnvrep
 import matplotlib
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
 
@@ -17,6 +17,35 @@ matplotlib.rcParams.update({'font.size': 18})
 path = Path('../data/2021.03.02 Measurement/processed')
 
 files = []
+
+def normalise(v, dimN=2):
+    r"""Normalise vector components of input array.
+
+    Normalise vectors, corresponding to slices along specified number
+    of initial spatial dimensions of an array, to have unit
+    :math:`\ell_2` norm. The remaining axes enumerate the distinct
+    vectors to be normalised.
+
+    Parameters
+    ----------
+    v : array_like
+      Array with components to be normalised
+    dimN : int, optional (default 2)
+      Number of initial dimensions over which norm should be computed
+
+    Returns
+    -------
+    vnrm : ndarray
+      Normalised array
+    """
+
+    axisN = tuple(range(0, dimN))
+    if np.isrealobj(v):
+        vn = np.sqrt(np.sum(v**2, axisN, keepdims=True))
+    else:
+        vn = np.sqrt(np.sum(np.abs(v)**2, axisN, keepdims=True))
+    vn[vn == 0] = 1.0
+    return np.asarray(v / vn, dtype=v.dtype)
 
 for x in path.iterdir():
     files.append(x)
@@ -100,7 +129,11 @@ path = '../data/2021.03.02 Measurement/frame/12.06.59'
 with open(path, 'rb') as f:
     frame = pickle.load(f)
     f.close()
-frame = cnvrep.normalise(frame, dimN=1)
+from numpy import linalg as LA
+#
+frame = normalise(frame, dimN=1)
+# frame = LA.norm(frame, ord= None, axis = -1)
+
 #
 # sample 100 lines: every 600 lines out of the 15,000 lines: spaced out in 3/500 second
 sample = 100
