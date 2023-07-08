@@ -3,6 +3,10 @@
 # @Author  : young wang
 # @FileName: psf_drift.py
 # @Software: PyCharm
+'''from this paper
+1.https://opg.optica.org/boe/fulltext.cfm?uri=boe-10-11-5755&id=422411
+2. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7046037/'''
+
 
 from pathlib import Path
 import numpy as np
@@ -53,10 +57,19 @@ for x in path.iterdir():
 files.sort()
 files.pop(0)
 psf = np.zeros((330, 1, len(files)), complex)
+matplotlib.rcParams.update(
+    {
+        'font.size': 18,
+        'text.usetex': False,
+        'font.family': 'stixgeneral',
+        'mathtext.fontset': 'stix',
+    }
+)
 for i in range(len(files)):
     with open(files[i], 'rb') as f:
         psf[:, :, i] = pickle.load(f)
         f.close()
+
 
 # phase = np.zeros((330,len(files)))
 # fig,ax = plt.subplots(1,2,figsize=(16,9))
@@ -253,12 +266,15 @@ ax.set_title('axial PSF peak phase')
 plt.show()
 
 
-fig, ax = plt.subplots(1,2, constrained_layout=True,figsize=(16,9))
+fig, ax = plt.subplots(1,2,figsize=(16,9))
 ax[0].stem(time, peak_cross)
 ax[0].set_ylim(0.95,1)
 ax[0].axhline(y = peak_cross.mean(),color='red',linestyle='--' )
-ax[0].set_title('mag xcorr average: %.4f' % peak_cross.mean(),fontname ='Arial')
-ax[0].set_xlabel('time: ms',fontname ='Arial')
+ax[0].set_title('(a) cross-correlation of axial PSF average: %.4f' % peak_cross.mean())
+
+ax[0].set_xlabel('time [ms]')
+ax[0].set_ylabel('normalized magnitude [a.u.]')
+
 
 axins = ax[1].inset_axes([0.05, 0.6, 0.37, 0.37])
 axins.set_xticks([])
@@ -271,7 +287,7 @@ for i in range(5):
     # ax[1].plot(np.roll(temp,i*3), label=str(i * 5) + ' ms')
     ax[1].plot(temp, label=str(i * 5) + ' ms')
 
-    ax[1].legend(loc='upper right', fontsize=(12))
+    ax[1].legend(loc='upper right', fontsize=(15))
     # temp += 60
 
     # zo_temp = temp[130:160]
@@ -286,10 +302,14 @@ for i in range(5):
     # axins2.set_yticks([])
 
 ax[1].indicate_inset_zoom(axins)
-ax[1].set_xlabel('axial depth: pixel',fontname ='Arial')
-ax[1].set_ylabel('amplitude: a.u.',fontname ='Arial')
-ax[1].set_title('axial PSF magnitude',fontname ='Arial')
-
-
+ax[1].set_xlabel('axial depth [pixels]')
+# ax[0].set_ylabel('normalized magnitude [a.u.]',fontname ='Arial')
+ax[1].set_title('(b) magnitude of axial PSF')
+plt.tight_layout()
+# plt.savefig('/Users/youngwang/Desktop/Master/Thesis/'
+#             'Figure/Chapter 2/2.12 phase drift/2.12 phase drift.pdf', dpi=600,
+#             format='pdf',
+#             bbox_inches=None, pad_inches=0.1,
+#             facecolor='auto', edgecolor='auto')
 plt.show()
 

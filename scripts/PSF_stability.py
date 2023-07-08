@@ -134,24 +134,29 @@ fig,ax = plt.subplots(2,3,figsize=(16,9))
 ax[0,0].plot(peak_mag, label='magnitude')
 ax[0,0].plot(dif_amp,color = 'red',label='magnitude difference')
 # ax[0,0].set_ylim(-0.1,0.1)
-ax[0,0].set_ylabel('magnitude(a.u.)')
+ax[0,0].set_ylabel('normalized magnitude [a.u.]')
+ax[0,0].set_title('(a) magnitude & difference',y=1.0, pad=35)
+
+# ax[0,0].set_title('(a) peak magnitude and difference', loc)
 
 secax = ax[0,0].secondary_yaxis('right',color = 'red')
-secax.set_ylabel('magnitude difference(a.u.)')
+secax.set_ylabel('normalized magnitude [a.u.]')
 # secax.plot(dif_amp,color = 'red',label='amplitude difference')
 
 secax.set_ylim(-0.1,0.1)
 ax[0,0].set_xlabel('measurements')
 
-ax[0,0].legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, mode="expand", borderaxespad=0.,fontsize = 12)
+ax[0,0].legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=2, mode="expand", borderaxespad=0.,fontsize = 12)
 
 ax[0,1].plot(phase,label='phase')
 ax[0,1].plot(dif_phase,color = 'red',label='phase difference')
-ax[0,1].set_ylabel('phase(rad)')
-ax[0,1].legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, mode="expand", borderaxespad=0.,fontsize = 12)
+ax[0,1].set_ylabel('phase [rad]')
+ax[0,1].set_title('(b) phase & difference',y=1.0, pad=35)
+
+ax[0,1].legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=2, mode="expand", borderaxespad=0.,fontsize = 12)
 
 secax = ax[0,1].secondary_yaxis('right', color = 'red')
-secax.set_ylabel('phase difference(rad)')
+secax.set_ylabel('phase difference [rad]')
 # secax.set_ylim(2*np.min(dif_phase),2*np.max(dif_phase))
 # secax.plot(dif_phase,color = 'red',label='phase difference')
 
@@ -161,7 +166,9 @@ ax[0,2].scatter(peak_comlex.real,peak_comlex.imag,label = 'complex')
 ax[0,2].scatter(dif_complex.real,dif_complex.imag,label = 'complex difference',color = 'red')
 ax[0,2].set_xlabel('real part')
 ax[0,2].set_ylabel('imaginary part')
-ax[0,2].legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, mode="expand", borderaxespad=0.,fontsize = 12)
+ax[0,2].set_title('(c) complex phasor & difference',y=1.0, pad=35)
+
+ax[0,2].legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=2, mode="expand", borderaxespad=0.,fontsize = 12)
 
 _, bins, _ = ax[1,0].hist(dif_amp, 1000, density=1)
 
@@ -169,8 +176,9 @@ mu_amp, sigma_amp = norm.fit(dif_amp)
 best_fit_line = norm.pdf(bins, mu_amp, sigma_amp)
 ax[1,0].plot(bins, best_fit_line)
 ax[1,0].set_xlim(left=-0.1, right = 0.1 )
+ax[1,0].set_title('(d) magnitude difference distribution')
 
-ax[1,0].set_xlabel('magnitude difference(a.u.)')
+ax[1,0].set_xlabel('normalized magnitude difference [a.u.]')
 ax[1,0].set_ylabel('number of events')
 
 textstr = r'$\sigma = %1.4f$ a.u.' %(sigma_amp)
@@ -187,6 +195,8 @@ best_fit_line = norm.pdf(bins, mu_phase, sigma_phase)
 ax[1,1].plot(bins, best_fit_line)
 
 ax[1,1].set_xlabel('phase difference(rad)')
+ax[1,1].set_title('(e) phase difference distribution')
+
 ax[1,1].set_ylabel('number of events')
 ax[1,1].set_xlim(left=-0.1, right = 0.1 )
 textstr = r'$\sigma = %1.2f $ mrad' %(sigma_phase*1000)
@@ -200,12 +210,17 @@ divider = make_axes_locatable(ax[1,2])
 cax = divider.append_axes('right', size='5%', pad=0.10)
 
 im = ax[1,2].hist2d(dif_complex.real,dif_complex.imag,bins = 100, density=1, cmap=plt.cm.jet)
-ax[1,2].set_title('complex difference')
+ax[1,2].set_title('(f) complex difference')
 ax[1,2].set_xlabel('real part')
 ax[1,2].set_ylabel('imaginary part')
 fig.colorbar(im[3],cax = cax, orientation='vertical',label="number of events")
 
 plt.tight_layout()
+# plt.savefig('/Users/youngwang/Desktop/Master/Thesis/'
+#             'Figure/Chapter 2/2.13 phase stability/2.13 phase stability.pdf', dpi=600,
+#             format='pdf',
+#             bbox_inches=None, pad_inches=0.1,
+#             facecolor='auto', edgecolor='auto')
 plt.show()
 
 # displacement calculation
