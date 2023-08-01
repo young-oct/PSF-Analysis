@@ -63,7 +63,7 @@ if __name__ == '__main__':
     print("Highest peak is at index", highest_peak_index, "with value", highest_peak_value)
 
     # create a mask for peaks within x samples of the highest peak
-    mask_size = 5
+    mask_size = 10
     mask = (indices >= highest_peak_index - mask_size) & (indices <= highest_peak_index + mask_size)
 
     # get the peaks within 20 samples of the highest peak
@@ -84,7 +84,7 @@ if __name__ == '__main__':
                                     second_highest_peak_index,
                                     second_highest_peak_value))
 
-    fig, ax = plt.subplots(1, 1, figsize=(13, 13))
+    fig, ax = plt.subplots(1, 1, figsize=(16, 9))
     ax.plot(x, psf_dB)
 
     x_indice, offset = second_highest_peak_index * K * 1000, 0.25
@@ -100,9 +100,9 @@ if __name__ == '__main__':
                 arrowprops=dict(arrowstyle="<->",
                                 connectionstyle="arc3", color='r', lw=2.5),
                 )
-    ax.text(x_left - 0.2, psf_dB.mean() + 20,
+    ax.text(x_left + 0.05, psf_dB.mean() + (highest_peak_value - second_highest_peak_value)/2,
             'PSF - ''sidelobe: %.2f dB' % (highest_peak_value - second_highest_peak_value),
-            fontsize=20, fontweight='bold', rotation='vertical')
+            fontsize=15, fontweight='bold', rotation='vertical')
 
     # define the range to exclude
     include_range = 15
@@ -122,30 +122,35 @@ if __name__ == '__main__':
 
     print(f"The average value excluding the main peak is {avg_excluding_range}")
 
-    ax.hlines(y=psf_dB.max(), xmin=x_left + 1.1, xmax=x_right + 1.2, colors='r', linestyle='dotted', linewidth=2.5)
-    ax.hlines(y=avg_excluding_range, xmin=x_left + 1.1, xmax=x_right + 1.2, colors='r', linestyle='dotted',
+    ax.hlines(y=psf_dB.max(), xmin=x_left + 2.6, xmax=x_right + 2.7, colors='r', linestyle='dotted', linewidth=2.5)
+    ax.hlines(y=avg_excluding_range, xmin=x_left + 2.6, xmax=x_right + 2.7, colors='r', linestyle='dotted',
               linewidth=2.5)
 
     ax.annotate("",
-                xy=(x_right + 1, avg_excluding_range), xycoords='data',
-                xytext=(x_right + 1, psf_dB.max()), textcoords='data',
+                xy=(x_right + 2.5, avg_excluding_range), xycoords='data',
+                xytext=(x_right + 2.5, psf_dB.max()), textcoords='data',
                 arrowprops=dict(arrowstyle="<->",
                                 connectionstyle="arc3", color='r', lw=2.5),
                 )
-    ax.text(x_right + 0.65, psf_dB.mean() + 15,
+    ax.text(x_right + 2.3, psf_dB.mean() + (highest_peak_value - avg_excluding_range)/3,
             'PSF - ''background: %.2f dB' % (highest_peak_value - avg_excluding_range),
-            fontsize=20, fontweight='bold', rotation='vertical')
+            fontsize=15, fontweight='bold', rotation='vertical')
 
     ax.set_ylabel('amplitude [dB]', fontweight='bold')
     ax.set_xlabel('depth [mm]', fontweight='bold')
     ax.set_title('averaged axial point spread function (PSF)', fontweight='bold')
 
+    ax.minorticks_on()
+    ax.tick_params(which='minor', width=2)  # Set the width of the minor ticks to 1 (you can adjust this value)
+
     plt.tight_layout()
+    # ax.tick_params(which='minor', width=4)  # Set the width of the minor ticks to 1 (you can adjust this value)
 
     desktop_path = os.path.join(os.getenv('HOME'), 'Desktop')
-    file_path = os.path.join(desktop_path, 'Master/Thesis/Figure/Chapter 1/1.19 PSF result.pdf')
+    file_path = os.path.join(desktop_path, 'Master/Thesis/Figure/Chapter 1/1.19 PSF setup/1.19 PSF result.svg')
     plt.savefig(file_path, dpi=600,
-                format='pdf',
+                format='svg',
                 bbox_inches='tight', pad_inches=0,
                 facecolor='auto', edgecolor='auto')
     plt.show()
+    plt.close(fig)
