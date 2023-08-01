@@ -6,6 +6,12 @@
 
 
 """
+1. https://www.sweptlaser.com/clean-optical-performance
+2. https://opg.optica.org/oe/fulltext.cfm?uri=oe-22-3-2632&id=279023
+3. https://opg.optica.org/abstract.cfm?uri=acp-2011-831116
+4. https://www.spiedigitallibrary.org/conference-proceedings-of-
+spie/8213/82130T/Long-coherence-length-and-linear-sweep-without-an-external-
+optical/10.1117/12.911477.short
 This script is to calculate the PSF for the the thesis proposal
 this is the learned psf, not the actual one
 
