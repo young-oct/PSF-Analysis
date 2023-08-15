@@ -146,11 +146,11 @@ if __name__ == '__main__':
     plt.tight_layout()
     # ax.tick_params(which='minor', width=4)  # Set the width of the minor ticks to 1 (you can adjust this value)
 
-    desktop_path = os.path.join(os.getenv('HOME'), 'Desktop')
-    file_path = os.path.join(desktop_path, 'Master/Thesis/Figure/Chapter 1/1.19 PSF setup/1.19 PSF result.svg')
-    plt.savefig(file_path, dpi=600,
-                format='svg',
-                bbox_inches='tight', pad_inches=0,
-                facecolor='auto', edgecolor='auto')
+    # desktop_path = os.path.join(os.getenv('HOME'), 'Desktop')
+    # file_path = os.path.join(desktop_path, 'Master/Thesis/Figure/Chapter 1/1.19 PSF setup/1.19 PSF result.svg')
+    # plt.savefig(file_path, dpi=600,
+    #             format='svg',
+    #             bbox_inches='tight', pad_inches=0,
+    #             facecolor='auto', edgecolor='auto')
     plt.show()
     plt.close(fig)

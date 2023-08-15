@@ -97,6 +97,9 @@
       <module name="PSF-Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -166,6 +169,11 @@
       <workItem from="1681308254522" duration="4000" />
       <workItem from="1690908040639" duration="3298000" />
       <workItem from="1690912215725" duration="7014000" />
+      <workItem from="1691349612472" duration="70000" />
+      <workItem from="1691498291981" duration="1119000" />
+      <workItem from="1691518864308" duration="2068000" />
+      <workItem from="1691523399306" duration="1609000" />
+      <workItem from="1692127048906" duration="984000" />
     </task>
     <servers />
   </component>
