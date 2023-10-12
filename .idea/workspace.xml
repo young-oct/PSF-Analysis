@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="375b66fb-98e6-45a7-abba-e73f40f21aec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/psf_exp.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/psf_exp.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
       <recent name="$PROJECT_DIR$/scripts/aux" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.psf_exp">
+  <component name="RunManager" selected="Python.PSF_stability">
     <configuration name="PSF_stability" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PSF-Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,8 +138,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.psf_exp" />
         <item itemvalue="Python.PSF_stability" />
+        <item itemvalue="Python.psf_exp" />
         <item itemvalue="Python.psf_drift" />
         <item itemvalue="Python.spectro_view" />
       </list>
@@ -174,6 +173,10 @@
       <workItem from="1691518864308" duration="2068000" />
       <workItem from="1691523399306" duration="1609000" />
       <workItem from="1692127048906" duration="984000" />
+      <workItem from="1692930199026" duration="1093000" />
+      <workItem from="1692963591358" duration="606000" />
+      <workItem from="1692965267937" duration="3000" />
+      <workItem from="1692992649850" duration="626000" />
     </task>
     <servers />
   </component>
